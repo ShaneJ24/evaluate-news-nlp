@@ -1,5 +1,5 @@
 
-// RegExp from: https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+// Referenced from: https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 
 const validateURL = (str) => {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
