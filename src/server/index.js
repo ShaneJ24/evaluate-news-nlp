@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
     res.sendFile("dist/index.html");
   });
 
-app.get('/test', function (req, res) {
+app.get('/article', function (req, res) {
     res.send(mockAPIResponse)
 });  
 
