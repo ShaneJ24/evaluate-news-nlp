@@ -42,7 +42,7 @@ const postData = async(url = '') => {
   //Update UI with the data from the Meaningcloud API
   function updateUI(data) {
     console.log(data)
-    polarity.innerHTML = "Polarity: " + polarityText(data.score_tag);
+    polarity.innerHTML = `Polarity: ${data.Polarity}`;
     confidence.innerHTML = `Subjectivity: ${data.Subjectivity}`;
     subjectivity.innerHTML = `Irony: ${data.Irony}`;
   }
