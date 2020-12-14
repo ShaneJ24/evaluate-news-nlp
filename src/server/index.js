@@ -9,18 +9,6 @@ var path = require('path');
 const mockAPIResponse = require('./mockAPI.js');
 const fetch = require("node-fetch");
 
-//const dotenv = require('dotenv');
-//const aylien = require('meaningCloud_textapi');
-//dotenv.config();
-
-
-
-//var meaningCloudApi = new meaningCloud({
-  
-  //  application_key: process.env.API_KEY
-  //});
-
-
 //express 
 const express = require("express");
 const app = express();
@@ -38,13 +26,15 @@ app.get("/", (req, res) => {
     res.sendFile("dist/index.html");
   });
 
-app.get('/article', function (req, res) {
+app.get('/newsarticle', function (req, res) {
     res.send(mockAPIResponse)
 });  
 
 //The post request
-app.post("/article", async (req, res) => {
-    const resp = await fetch(`${apiUrl}${API_KEY}&lang=auto&url=${req.body}`);
+app.post("/newsarticle", async (req, res) => {
+  const requrl = `${apiUrl}${API_KEY}&lang=auto&url=${req.body}`;
+  console.log('calling api:', requrl);
+    const resp = await fetch(requrl);
   
     try {
       const data = await resp.json();
