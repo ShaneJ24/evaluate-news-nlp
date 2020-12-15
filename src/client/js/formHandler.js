@@ -52,11 +52,12 @@ const postData = async(url = '') => {
     } catch (error) {
       console.log('error', error);
     }
+}
 
 function updateUI(data) {
   console.log(data)
   document.getElementById('Confidence').innerHTML = `Confidence: ${data.confidence}`;
   document.getElementById('Subjectivity').innerHTML = `Subjectivity: ${data.Subjectivity}`;
   document.getElementById('Irony').innerHTML = `Irony: ${data.Irony}`; 
-}}
+}
 export {handleSubmit}
