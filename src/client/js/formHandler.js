@@ -9,11 +9,10 @@ function handleSubmit(event) {
   console.log("::: Form Submitted :::")
     
   postData( formText )
-    
-  .then (updateUI()
-  )
+
+  .then(updateUI)
+  
 }
-export {handleSubmit}
 
 
     // fetch("http://localhost:8080/newsarticle", {
@@ -34,7 +33,7 @@ export {handleSubmit}
 
 //Function to send the data
 const postData = async(url = '') => {
-  const response = await fetch('http://localhost:8081/article', {
+  const response = await fetch('http://localhost:8081/newsarticle', {
     method: 'POST',
     credentials: 'same-origin',
     mode: 'cors',
@@ -51,17 +50,11 @@ const postData = async(url = '') => {
     } catch (error) {
       console.log('error', error);
     }
-  
-  
-//Update UI with the data from the Meaningcloud API
-const updateUI = async () => {
-  const request = await fetch('/newsarticle');
-  try{
-    const allData = await request.json();
-    document.getElementById('Confidence').innerHTML = allData.confidence;
-    document.getElementById('Irony').innerHTML = allData.irony;
-    document.getElementById('Subjectivity').innerHTML = allData.subjectivity;
-  
-  }catch(error){
-    console.log("error", error);
-  }
+
+function updateUI(data) {
+  console.log(data)
+  document.getElementById('Confidence').innerHTML = `Confidence: ${data.confidence}`;
+  document.getElementById('Subjectivity').innerHTML = `Subjectivity: ${data.Subjectivity}`;
+  document.getElementById('Irony').innerHTML = `Irony: ${data.Irony}`; 
+}}
+export {handleSubmit}
