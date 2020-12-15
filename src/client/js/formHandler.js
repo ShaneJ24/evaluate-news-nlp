@@ -10,7 +10,9 @@ function handleSubmit(event) {
     
   postData( formText )
 
-  .then(updateUI)
+  .then(
+    updateUI()
+  )
   
 }
 
