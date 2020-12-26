@@ -18,17 +18,18 @@
 
         <main>
             <section>
-                <form onsubmit="return handleSubmit(event)">
-                    <input id="url" type="text" name="input" placeholder="http://">
-                    <input id="submit" type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form id="" class="" onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" type="text" name="input" value="" placeholder="Name">
+                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
-            </section>
+            <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-                    <div id="subjectivity"></div>
-                    <div id="confidence"></div>
+                <strong>Form Results</strong>
+                    <div id="Confidence">Confidence:</div>
+                    <div id="Irony">Irony:</div>
+                    <div id="Subjectivity">Subjectivity:</div>
+                    
             </section>
         </main>
 

@@ -1,48 +1,37 @@
 function handleSubmit(event) {
-    event.preventDefault()
+  console.log('[handleSubmit]', event, event.target)
+  event.preventDefault()
 
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+  // check what text was put into the form field
+  let formText = document.getElementById('name').value
+  Client.validateURL(formText)
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/test')
-    .then(res => {
-      return res.json()
-    })
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+  console.log("::: Form Submitted :::")
+
+  postData(formText)
 }
 
-export { handleSubmit }
-
-
 //Function to send the data
-const postData = async(url = '') => {
-    const response = await fetch('http://localhost:8081/article', {
-      method: 'POST',
-      credentials: 'same-origin',
-      mode: 'cors',
-      headers: {
-         'Content-Type': 'text/plain',
-      },
-      body: url,
-    });
-    
-    try {
-      const newData = await response.json();
-      console.log(newData)
-      return newData
-    } catch (error) {
+const postData = (url = '') => {
+  const response = fetch('http://localhost:8081/newsarticle', {
+    method: 'POST',
+    credentials: 'same-origin',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: url,
+  }).then(res => res.json())
+    .then(newData => updateUI(newData))
+    .catch((error) => {
       console.log('error', error);
-    }
-  }
-  
-  //Update UI with the data from the Meaningcloud API
-  function updateUI(data) {
-    console.log(data)
-    polarity.innerHTML = "Polarity: " + polarityText(data.score_tag);
-    confidence.innerHTML = `Subjectivity: ${data.Subjectivity}`;
-    subjectivity.innerHTML = `Irony: ${data.Irony}`;
-  }
+    });
+}
+
+function updateUI(newData) {
+  console.log(newData)
+  document.getElementById('Confidence').innerHTML = `Confidence: ${newData.confidence}`;
+  document.getElementById('Subjectivity').innerHTML = `Subjectivity: ${newData.subjectivity}`;
+  document.getElementById('Irony').innerHTML = `Irony: ${newData.irony}`;
+}
+export { handleSubmit }
