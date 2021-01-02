@@ -28,8 +28,8 @@ const postData = (url = '') => {
     });
 }
 
-function updateUI(newData.status.msg) {
-  console.log(newData)
+function updateUI(newData) {
+  console.log(newData.status.msg)
   document.getElementById('Confidence').innerHTML = `Confidence: ${newData.confidence}`;
   document.getElementById('Subjectivity').innerHTML = `Subjectivity: ${newData.subjectivity}`;
   document.getElementById('Irony').innerHTML = `Irony: ${newData.irony}`;
