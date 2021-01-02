@@ -28,7 +28,7 @@ const postData = (url = '') => {
     });
 }
 
-function updateUI(newData) {
+function updateUI(newData.status.msg) {
   console.log(newData)
   document.getElementById('Confidence').innerHTML = `Confidence: ${newData.confidence}`;
   document.getElementById('Subjectivity').innerHTML = `Subjectivity: ${newData.subjectivity}`;
